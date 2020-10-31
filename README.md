@@ -15,14 +15,14 @@ Changes to manage.py startapp (django --> core --> management --> commands --> s
 
 *Will automatically add the app to your settings.py under INSTALLED_APPS
 *Will automatically create forms.py in your app directory with 'from django import forms'
-*Will automatically create urls.py in your app directory with 'from django.conf.urls import url' as well as 'from *app_name* import views' and a blank urlpatterns = []
+*Will automatically create urls.py in your app directory with 'from django.conf.urls import url' as well as 'from *app_name* import views' and a blank urlpatterns = [ ]
 *Will update urls.py in main directory to import views.py from your app
 
 Changes to settings.py-tpl (django --> conf --> project_template --> project_name --> settings.py-tpl):
 
 *Automatically creates variables for TEMPLATES_DIR and STATIC_DIR
-*Adds TEMPLATES_DIR to TEMPLATES = [...'DIRS':[],...]
-*Creates STATICFILES_DIRS = [] and adds STATIC_DIR to it
+*Adds TEMPLATES_DIR to TEMPLATES = [...'DIRS':[ ],...]
+*Creates STATICFILES_DIRS = [ ] and adds STATIC_DIR to it
 
 django_html.sh:
 
