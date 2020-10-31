@@ -8,33 +8,45 @@ Changes to Django Conf files that make full stack development a lot easier. I cr
 Changes to templates.py (django --> core --> management --> templates.py):
 
 *Automatically creates templates and static directories
+
 *Within static directory, automatically creates directories for css and js and auto-populates blank files for each
+
 *Also within static directory, it will create a directory called site packages; search your machine from your home directory for bootstrap.min.css, bootstrap.min.js, popper.min.js, and jquery.min.js; and then copy those files to the site package directory (ALL of these files -need- to be installed to your computer somewhere in your home directory. Eventually I will add conditionals in case you don't have them all or don't want them all.)
 
 Changes to manage.py startapp (django --> core --> management --> commands --> startapp.py):
 
 *Will automatically add the app to your settings.py under INSTALLED_APPS
+
 *Will automatically create forms.py in your app directory with 'from django import forms'
+
 *Will automatically create urls.py in your app directory with 'from django.conf.urls import url' as well as 'from *app_name* import views' and a blank urlpatterns = [ ]
+
 *Will update urls.py in main directory to import views.py from your app
 
 Changes to settings.py-tpl (django --> conf --> project_template --> project_name --> settings.py-tpl):
 
 *Automatically creates variables for TEMPLATES_DIR and STATIC_DIR
+
 *Adds TEMPLATES_DIR to TEMPLATES = [...'DIRS':[ ],...]
+
 *Creates STATICFILES_DIRS = [ ] and adds STATIC_DIR to it
 
 django_html.sh:
 
 *Shell script that will create an html template formatted for django
+
 *Includes filepaths to sitepackages and static loads them in
+
 *Includes commented out tags for adding the css and js files created by the templates.py file
 
 TO START A PROJECT:
 
 *django-admin startproject projname
+
 *cd projname
+
 *python manage.py startapp appname
+
 *cd ../django_html.sh > ./templates/filename.html
 
 And from there, the only things on your plate are building models, forms, views, mapping urls, and editing your html/css/js. (AKA the actual site building)
