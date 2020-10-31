@@ -32,10 +32,10 @@ django_html.sh:
 
 TO START A PROJECT:
 
-django-admin startproject projname
-cd projname
-python manage.py startapp appname
-cd ../django_html.sh > ./templates/filename.html
+*django-admin startproject projname
+*cd projname
+*python manage.py startapp appname
+*cd ../django_html.sh > ./templates/filename.html
 
 And from there, the only things on your plate are building models, forms, views, mapping urls, and editing your html/css/js. (AKA the actual site building)
 All of the setup should basically be taken care of.
