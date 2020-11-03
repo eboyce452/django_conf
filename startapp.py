@@ -59,9 +59,11 @@ from django.core import validators'''
 
         with open(filepathgamma, 'w') as f:
             urls_text = '''from django.conf.urls import url
-from ''' + app_name + ' import views' + '\n\n' + '''urlpatterns = [
+from ''' + app_name + ' import views' + '\n\n' + '''app_name = '{}'
 
-]'''
+urlpatterns = [
+
+]'''.format(app_name)
             f.write(urls_text)
             f.close()
 
