@@ -50,7 +50,8 @@ class Command(TemplateCommand):
         filepathbeta = os.getcwd() + '/' + app_name + '/' + 'forms.py'
 
         with open(filepathbeta, 'w') as f:
-            form_text = 'from django import forms'
+            form_text = '''from django import forms
+from django.core import validators'''
             f.write(form_text)
             f.close()
 
