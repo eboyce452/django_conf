@@ -106,18 +106,6 @@ class TemplateCommand(BaseCommand):
                     except:
                         raise Exception('Cannot create template/static folders')
 
-                    css_string = '/* Blank CSS Sheet - Reset CSS with CTRL + F5 to Clear Browser Cache*/'
-
-                    with open(path.join(css_path, "projectcss.css"), 'w') as f:
-                        f.write(css_string)
-                        f.close()
-
-                    js_string = '// Blank Javascript File - Reset Javascript with CTRL + F5 to Clear Browser Cache'
-
-                    with open(path.join(js_path, 'projectjs.js'), 'w') as f:
-                    	f.write(js_string)
-                    	f.close()
-
                     package_pathtargs = {'bootstrap.min.css':'','bootstrap.min.js':'','popper.min.js':'','jquery.min.js':''}
 
                     for x in package_pathtargs:
@@ -133,6 +121,30 @@ class TemplateCommand(BaseCommand):
                     for iterate, item in enumerate(PACKAGE_PATHS):
                         newpackagepath = path.join(sitepackage_path, PACKAGE_NAMES[iterate])
                         shutil.copyfile(item, newpackagepath)
+
+                    python_template = '''import re
+import os
+
+html_files = input('Please list the html files you want to make (w/ or w/out .html, separated by commas: ')
+html_files = html_files.split(',')
+html_files = [a.replace('.html','') for a in html_files]
+html_files = [a.replace(' ','') for a in html_files]
+html_files = [(str(a) + '.html') for a in html_files]
+
+app_name = input('app name: ')
+pathing = os.path.join(os.getcwd(), 'templates', app_name)
+
+for x in html_files:
+    with open(os.path.join(pathing, '{}_extension.html'.format(app_name)), 'r') as f:
+        extension_template = f.read()
+        f.close()
+    with open(os.path.join(pathing, x), 'w') as f:
+        f.write(extension_template)
+        f.close()'''
+
+                    with open(os.path.join(top_dir, 'generate_html.py'), 'w') as f:
+                        f.write(python_template)
+                        f.close()
 
                 #####-----------------------------------------------------------------------#####
 
