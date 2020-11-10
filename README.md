@@ -23,6 +23,8 @@ Changes to Django Conf files that make full stack development a lot easier. I cr
 
 *Will update urls.py in main directory to import views.py from your app
 
+*will automatically make a templatetags directory and an init.py file
+
 # Changes to settings.py-tpl (django --> conf --> project_template --> project_name --> settings.py-tpl):
 
 *Automatically creates variables for TEMPLATES_DIR and STATIC_DIR
@@ -31,13 +33,11 @@ Changes to Django Conf files that make full stack development a lot easier. I cr
 
 *Creates STATICFILES_DIRS = [ ] and adds STATIC_DIR to it
 
-# django_html.sh:
+# django_html_base.sh and django_extend_html.sh:
 
-*Shell script that will create an html template formatted for django
+*Django_base_html.sh is a base html template. Includes statically loaded files such as bootstrap, popper, and jquery. Also contains the block django tags so that it can be extended.
 
-*Includes filepaths to sitepackages and static loads them in
-
-*Includes commented out tags for adding the css and js files created by the templates.py file
+*Django_extend_html.sh is an extension template that will automatically link to your base template and set up your block tags for body html code.
 
 # TO START A PROJECT:
 
