@@ -30,9 +30,10 @@ class Command(TemplateCommand):
 
         super(Command, self).handle('app', app_name, target, **options)
 
-        filepathalpha = str(os.getcwd()) + '/' + (str(os.getcwd()).split('/'))[-1] + '/' + 'settings.py'
+        filepath_proj = os.path.join(os.getcwd(),os.getcwd().split(os.sep)[-1])
+        filepath_app = os.path.join(os.getcwd(), app_name)
         
-        with open(filepathalpha, 'r') as f:
+        with open(os.path.join(filepath_proj,'settings.py'), 'r') as f:
           file_string = f.read()
           f.close()
 
@@ -43,21 +44,17 @@ class Command(TemplateCommand):
 
         new_file_string = file_string[:stop] + "'" + app_name + "'" + ',' + '\n\t' + file_string[stop:]
         
-        with open(filepathalpha, 'w') as f:
+        with open(os.path.join(filepath_proj,'settings.py'), 'w') as f:
           f.write(new_file_string)
           f.close()
 
-        filepathbeta = os.getcwd() + '/' + app_name + '/' + 'forms.py'
-
-        with open(filepathbeta, 'w') as f:
+        with open(os.path.join(filepath_app, 'forms.py'), 'w') as f:
             form_text = '''from django import forms
 from django.core import validators'''
             f.write(form_text)
             f.close()
 
-        filepathgamma = os.getcwd() + '/' + app_name + '/' + 'urls.py'
-
-        with open(filepathgamma, 'w') as f:
+        with open(os.path.join(filepath_app, 'urls.py'), 'w') as f:
             urls_text = '''from django.conf.urls import url
 from ''' + app_name + ' import views' + '\n\n' + '''app_name = '{}'
 
@@ -67,9 +64,7 @@ urlpatterns = [
             f.write(urls_text)
             f.close()
 
-        filepathdelta = str(os.getcwd()) + '/' + (str(os.getcwd()).split('/'))[-1] + '/' + 'urls.py'
-
-        with open(filepathdelta, 'r') as f:
+        with open(os.path.join(filepath_proj, 'urls.py'), 'r') as f:
             main_urls_text = f.read()
             f.close()
 
@@ -80,20 +75,19 @@ urlpatterns = [
 
         newstring = main_urls_text[:stop] + '\n' + 'from ' + app_name + ' import views' + main_urls_text[stop:]
 
-        with open(filepathdelta, 'w') as f:
+        with open(os.path.join(filepath_proj, 'urls.py'), 'w') as f:
             f.write(newstring)
             f.close()
 
-        filepath_epsilon = os.path.join(os.getcwd(), app_name)
-        filepath_epsilon = os.path.join(filepath_epsilon, 'templatetags')
-
         try:
-            print(filepath_epsilon)
-            os.mkdir(filepath_epsilon)
+            os.mkdir(os.path.join(filepath_app, 'templatetags'))
         except:
             raise
 
-        if os.path.exists(filepath_epsilon) == True:
+        if os.path.exists(os.path.join(filepath_app, 'templatetags')) == True:
+            with open(os.path.join(filepath_app, 'templatetags', '__init__.py'), 'w') as f:
+                f.write('')
+                f.close()h.exists(filepath_epsilon) == True:
             with open(os.path.join(filepath_epsilon, '__init__.py'), 'w') as f:
                 f.write('')
                 f.close()        
