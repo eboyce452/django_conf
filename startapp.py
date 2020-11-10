@@ -84,4 +84,16 @@ urlpatterns = [
             f.write(newstring)
             f.close()
 
-        
+        filepath_epsilon = os.path.join(os.getcwd(), app_name)
+        filepath_epsilon = os.path.join(filepath_epsilon, 'templatetags')
+
+        try:
+            print(filepath_epsilon)
+            os.mkdir(filepath_epsilon)
+        except:
+            raise
+
+        if os.path.exists(filepath_epsilon) == True:
+            with open(os.path.join(filepath_epsilon, '__init__.py'), 'w') as f:
+                f.write('')
+                f.close()        
