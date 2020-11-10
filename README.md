@@ -47,9 +47,7 @@ Changes to Django Conf files that make full stack development a lot easier. I cr
 
 *python manage.py startapp appname
 
-*../django_base_html.sh > ./templates/base.html
-
-*../django_extend_html.sh > ./templates/filename.html
+*python generate_html.py
 
 And from there, the only things on your plate are building models, forms, views, mapping urls, and editing your html/css/js. (AKA the actual site building)
 All of the setup should basically be taken care of.
@@ -59,3 +57,5 @@ All of the setup should basically be taken care of.
 11/10/2020 : Updated the startapp.py so that the code was much cleaner and is no longer OS dependent. It should work across all operating systems though I have not tested on Windows or Mac yet. It will also automatically create a templatetags directory and an __init__.py file in case you want custom tagging.
 
 11/10/2020 : I also changed the shell templates. Now there is one for your base html template (django_base_html.sh) and another script for your templates that are extensions (django_extend_html.sh). You can easily use the django_base_html.sh as a normal html template since the {% block %} code shouldn't actually affect anything, though feel free to comment it out if it is causing problems. In the future, I will probably just make these templates through the django-admin startproject process by altering templates.py. For now though, I kind of like the control, and it is much easier to make multiple extension templates with the shell script.
+
+11/11/2020 : Quick change, I ended up getting rid of the shell templates and folding them into the startapp.py file. Now a base.html and extend.html are created and named specifically for each app. To compensate for the loss of convenience provided by the shell applications, the startapp file now creates a .py file called generate_html.py. When you run it, it will ask what .html files you want to create and for which app, then it will make the html files from the extend.html template. So it is roughly as convenient, but is much better integrated as it now auto-formats the django loads with the appropriate files. Furthermore, I added an auto-generating population script called auto_populate.py if you want to fill a model with random data for testing, I added in commented out example code for basically every .py file so that you can follow a template for building models/forms, and I formatted almost all of the code (including the django templates themselves) to use os.path generic filepaths so that it is less OS specific. This is all working so smoothly that I may eventually end up creating an entirely separate application and UI to make django way more user friendly. Kind of like squarespace but including the whole stack. But that is way way down the road and my code so far has been kinda rushed and sloppy just so I can get something useable working for myself. Still, something to consider.
