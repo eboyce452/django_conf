@@ -47,7 +47,15 @@ Changes to Django Conf files that make full stack development a lot easier. I cr
 
 *python manage.py startapp appname
 
-*cd ../django_html.sh > ./templates/filename.html
+*../django_base_html.sh > ./templates/base.html
+
+*../django_extend_html.sh > ./templates/filename.html
 
 And from there, the only things on your plate are building models, forms, views, mapping urls, and editing your html/css/js. (AKA the actual site building)
 All of the setup should basically be taken care of.
+
+## Change Log
+
+11/10/2020 : Updated the startapp.py so that the code was much cleaner and is no longer OS dependent. It should work across all operating systems though I have not tested on Windows or Mac yet. It will also automatically create a templatetags directory and an __init__.py file in case you want custom tagging.
+
+11/10/2020 : I also changed the shell templates. Now there is one for your base html template (django_base_html.sh) and another script for your templates that are extensions (django_extend_html.sh). You can easily use the django_base_html.sh as a normal html template since the {% block %} code shouldn't actually affect anything, though feel free to comment it out if it is causing problems. In the future, I will probably just make these templates through the django-admin startproject process by altering templates.py. For now though, I kind of like the control, and it is much easier to make multiple extension templates with the shell script.
