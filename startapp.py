@@ -210,7 +210,10 @@ register = template.Library()
         for match in matches:
             stop = match.span()[-1]
 
-        newstring = app_views_text[:stop] + '\n' + '#from {}.forms import Form_Name(s)\n'.format(app_name) + '#from {}.models import Model_Name(s)\n'.format(app_name) + app_views_text[stop:] + '''\n# def index(request):
+        newstring = app_views_text[:stop] + '''from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth import authenticate, login, logout''' + '\n' + '#from {}.forms import Form_Name(s)\n'.format(app_name) + '#from {}.models import Model_Name(s)\n'.format(app_name) + app_views_text[stop:] + '''\n# def index(request):
 #     return render(request, '{}')
 
 # def formview(request):
