@@ -90,11 +90,9 @@ class Command(TemplateCommand):
 
 </html>'''.format(os.path.join('css',app_name,'{}.css'.format(app_name)), os.path.join('js',app_name,'{}.js'.format(app_name)))
 
-        extension_template = '''<!DOCTYPE html>
+        extension_template = '''{{% extends "{}" %}}
 
 {{% load {}_custom_tags %}}
-
-{{% extends "{}" %}}
 
 {{% block body_block %}}
     <!-- Add in your body html for this page here -->
@@ -129,7 +127,7 @@ from django.core import validators
 from django.contrib.auth.models import User
 # from {}.models import model_name(s)
 
-# In the HTML don't forget to add csrf_token !!
+# In the HTML don't forget to add csrf_token!!
 
 # class Form_Name(forms.Form):
 #     name = forms.CharField()
