@@ -88,12 +88,14 @@ class TemplateCommand(BaseCommand):
 
                 template_path = path.join(top_dir, 'templates')
                 static_path = path.join(top_dir, 'static')
+                media_path = path.join(top_dir, 'media')
 
                 if self.app_or_project == 'project':
 
                     try:
                         os.mkdir(template_path)
                         os.mkdir(static_path)
+                        os.mkdir(media_path)
 
                         css_path = path.join(static_path, 'css')
                         js_path = path.join(static_path, 'js')
