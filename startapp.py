@@ -126,6 +126,7 @@ class Command(TemplateCommand):
         with open(os.path.join(filepath_app, 'forms.py'), 'w') as f:
             form_text = '''from django import forms
 from django.core import validators
+from django.contrib.auth.models import User
 # from {}.models import model_name(s)
 
 # In the HTML don't forget to add csrf_token !!
