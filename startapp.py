@@ -210,7 +210,7 @@ register = template.Library()
         for match in matches:
             stop = match.span()[-1]
 
-        newstring = app_views_text[:stop] + '''from django.core.urlresolvers import reverse
+        newstring = app_views_text[:stop] + '''\nfrom django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout''' + '\n' + '#from {}.forms import Form_Name(s)\n'.format(app_name) + '#from {}.models import Model_Name(s)\n\n'.format(app_name) + '#Remember to add LOGIN_URL = "/app_name/user_login" to settings.py if you are adding login' + app_views_text[stop:] + '''\n# def index(request):
