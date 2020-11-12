@@ -128,6 +128,8 @@ class Command(TemplateCommand):
 from django.core import validators
 # from {}.models import model_name(s)
 
+# In the HTML don't forget to add csrf_token !!
+
 # class Form_Name(forms.Form):
 #     name = forms.CharField()
 #     email = forms.EmailField()
