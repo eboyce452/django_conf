@@ -33,6 +33,10 @@ Changes to Django Conf files that make full stack development a lot easier. I cr
 
 *Creates STATICFILES_DIRS = [ ] and adds STATIC_DIR to it
 
+# Changes to models.py-tpl (django --> conf --> app_template --> models.py-tpl
+
+*Added User model import from django.contrib.auth
+
 # django_html_base.sh and django_extend_html.sh:
 
 *Django_base_html.sh is a base html template. Includes statically loaded files such as bootstrap, popper, and jquery. Also contains the block django tags so that it can be extended.
